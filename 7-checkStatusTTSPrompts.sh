@@ -1,22 +1,21 @@
 #!/bin/bash
 . cfg.sh
 #
-for d in *.json; do mv "$d" "${d// /_}"; done
+var=${1:?You have to provide an EDB text filename with no spaces as an argument}
 #
-# Cataloging all the WAV files in "audiofiles" folder
-#ls -1 *.wav > wavfiles.txt
-ls -1 *.json > jsonfiles.txt
-#
-# Converting each WAV file listed in the text file "wavfiles.txt"
+# Storing the JSON file containing the speaker ID into a variable
+speaker_json=`ls -1 *.json`
 #
 
-while IFS= read -r file
+while IFS= read -r line
 	do
-		spk_bname=$(basename "$file" .json) &&
-		prompt_file=$spk_bname.txt &&
-		prompt_text=`cat $prompt_file` &&
-    speakerID=`grep "speaker_id" $file|cut -f4 -d'"'` &&
-		echo "Checking status from prompt " $spk_bname " ............." &&
-		curl -X GET -u $useCred "$url/v1/customizations/$customID/prompts/$spk_bname"
+		# Extract audio filename from EDB file
+		prompt_audio=`echo $line|cut -f1 -d:` &&
+		# Extract audio basename to be used as the TTS prompt name
+		prompt_name=$(basename "$prompt_audio" .wav) &&
+		# Extract Speaker Model ID from JSON file
+    speakerID=`grep "speaker_id" $speaker_json|cut -f4 -d'"'` &&
+		echo "Checking status from prompt " $prompt_name " ............." &&
+		curl -X GET -u $useCred "$url/v1/customizations/$customID/prompts/$prompt_name"
 
-	done < "jsonfiles.txt"
+	done < "$1"

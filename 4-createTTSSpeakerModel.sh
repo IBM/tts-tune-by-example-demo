@@ -1,13 +1,15 @@
 #!/bin/bash
 . cfg.sh
 #
+# Replace spaces an dashes in the audio filenames with underscore "_"
 for d in *.wav; do mv "$d" "${d// /_}"; done
+for d in *.wav; do mv "$d" "${d//-/_}"; done
 #
-# Cataloging all the WAV files in "audiofiles" folder
-#ls -1 *.wav > wavfiles.txt
+# Cataloging all the WAV files from the current folder into "audiofiles.txt"
 ls -1 *.wav > audiofiles.txt
 #
-# Converting each WAV file listed in the text file "wavfiles.txt"
+# Creating a speaker model for each WAV audio file in "audiofiles.txt"
+# The Speaker model id will be stored in the JSON file with the same name as the audio file
 #
 while IFS= read -r file
 	do

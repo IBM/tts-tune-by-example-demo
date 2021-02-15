@@ -1,19 +1,13 @@
 #!/bin/bash
 . cfg.sh
 #
-for d in *.json; do mv "$d" "${d// /_}"; done
+# Storing the JSON file containing the speaker ID into a variable
+speaker_json=`ls -1 *.json`
 #
-# Cataloging all the WAV files in "audiofiles" folder
-#ls -1 *.wav > wavfiles.txt
-ls -1 *.json > jsonfiles.txt
-#
-# Converting each WAV file listed in the text file "wavfiles.txt"
-#
-while IFS= read -r file
-	do
-		bname=$(basename "$file" .json) &&
-    speakerID=`grep "speaker_id" $file|cut -f4 -d'"'` &&
-		echo "Getting details from speaker id " $file " ............." &&
-		curl -X GET -u $useCred "$url/v1/speakers/$speakerID" > $bname-details.txt
 
-	done < "jsonfiles.txt"
+# Extract speaker ID basename from JSON filename
+speaker_bname=$(basename "$speaker_json" .json)
+# Extract Speaker Model ID from JSON file
+speakerID=`grep "speaker_id" $speaker_json|cut -f4 -d'"'`
+echo "Getting details from speaker id " $speakerID " and storing the into " $speaker_bname-details.txt "............."
+curl -X GET -u $useCred "$url/v1/speakers/$speakerID" > $speaker_bname-details.txt
