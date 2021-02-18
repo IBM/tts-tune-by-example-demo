@@ -11,7 +11,8 @@ while IFS= read -r line
 		# Extract audio filename from EDB file
 		prompt_audio=`echo $line|cut -f1 -d:` &&
 		# Extract audio basename to be used as the TTS prompt name
-		prompt_name=$(basename "$prompt_audio" .wav) &&
+		prompt_basename=$(basename "$prompt_audio" .wav) &&
+		prompt_name="${prompt_basename}_Speaker" &&
 		# Extract text utterance from EDB file
 		prompt_text=`echo $line|cut -f2 -d:` &&
 		# Extract Speaker Model ID from JSON file
