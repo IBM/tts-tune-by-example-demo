@@ -1,0 +1,6 @@
+Hello there! Welcome to PizzaCo! How can I help you today?
+Do you want sausage, peppers, and pepperoni on your pizza?
+The deal includes two meat toppings or a three vegetable toppings. Not both.
+We offer a high, low, and medium soft drink with your order.
+Really? - This is very interesting...
+Well, I have good news for you, sir.

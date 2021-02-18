@@ -7,7 +7,6 @@ var=${1:?You have to provide a text file with utterances as an argument}
 timestamp=$(date +%m%d%y-%H%M%S)
 # Creates a folder with a name composed of the timestamp and the text file argument
 mkdir $timestamp$1-baseline
-cp $1 ./$timestamp$1-baseline
 COUNTER=1
 # Creates a text file output to match the string with the audio file generated
 echo "List of utterances with their voice audio output using " $voice > ./$timestamp$1-baseline/AudioList.txt

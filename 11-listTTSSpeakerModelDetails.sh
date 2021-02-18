@@ -1,9 +1,10 @@
 #!/bin/bash
 . cfg.sh
 #
-# Storing the JSON file containing the speaker ID into a variable
-speaker_json=`ls -1 *.json`
+var=${1:?You have to provide a JSON filename with no spaces as the argument}
 #
+# Storing the JSON file containing the speaker ID into a variable
+speaker_json=$1
 
 # Extract speaker ID basename from JSON filename
 speaker_bname=$(basename "$speaker_json" .json)

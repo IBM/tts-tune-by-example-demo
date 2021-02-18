@@ -1,0 +1,9 @@
+List of utterances with their voice audio output using  en-US_EmilyV3Voice
+
+SSML Tag:  Do you want sausage, peppers, and pepperoni?  -- TTS Standard Audio File  Do_you_want_sausage__peppers__and_pepperoni_.wav
+SSML Tag:  The deal includes two meat toppings or a three vegetable toppings. Not both.  -- TTS Standard Audio File  The_deal_includes_two_meat_toppings_or_a_three_vegetable_toppings__Not_both_.wav
+SSML Tag:  why hello there!  -- TTS Standard Audio File  why_hello_there_.wav
+SSML Tag:  why hello there! How can I help you?  -- TTS Standard Audio File  why_hello_there__How_can_I_help_you_.wav
+SSML Tag:  Really?  -- TTS Standard Audio File  Really_.wav
+SSML Tag:  I have good news to give you, sir.  -- TTS Standard Audio File  I_have_good_news_to_give_you__sir_.wav
+SSML Tag:  We offer a high, low, and medium deductible plan.  -- TTS Standard Audio File  We_offer_a_high__low__and_medium_deductible_plan_.wav
